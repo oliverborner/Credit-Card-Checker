@@ -30,7 +30,8 @@ fn main() {
     let check_digit = digits.last().cloned().unwrap();
 
     // remove last digit from vec
-    digits.retain(|&x| x != check_digit);
+    let final_length = digits.len().saturating_sub(1);
+    digits.truncate(final_length);
 
     // reverse digits
     digits.reverse();
