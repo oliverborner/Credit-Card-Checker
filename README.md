@@ -1,4 +1,4 @@
-# Credit Card Checker
+# :credit_card: Credit Card Checker
 ### A credit card checker written in Rust  
 
 ![alt text](https://github.com/oliverborner/Credit-Card-Checker/blob/main/screenshot.png)
