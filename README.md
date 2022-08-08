@@ -3,10 +3,6 @@
 
 ![alt text](https://github.com/oliverborner/Credit-Card-Checker/blob/main/screenshot.png)
 
----
-
-### Info
-
 Checks if a card number is valid with the help of the [Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm)  
 and checks also for the card type via regex.  
 
