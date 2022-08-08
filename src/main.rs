@@ -24,14 +24,10 @@ fn main() {
 
     // ************** Luhn Algorithm **************
 
-    // get last digit
+    // get last digit and remove last digit from digits vec
     let check_digit = digits.last().cloned().unwrap();
-
-    // remove last digit from vec
     let final_length = digits.len().saturating_sub(1);
-
     digits.truncate(final_length);
-
     digits.reverse();
 
     // process digits
