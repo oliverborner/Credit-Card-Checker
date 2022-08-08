@@ -1,5 +1,6 @@
 # Credit Card Checker
-#### a credit card checker written in Rust  
+### a credit card checker written in Rust  
+
 ![alt text](https://github.com/oliverborner/Credit-Card-Checker/blob/main/screenshot.png)
 
 ---
@@ -16,6 +17,6 @@ https://stackoverflow.com/questions/72768/how-do-you-detect-credit-card-type-bas
 cargo run  
 ```
 
-#### dependencies:  
-colored = "2.0.0"  
-regex = "1"  
+### dependencies  
+- colored = "2.0.0"  
+- regex = "1"  
