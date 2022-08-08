@@ -21,5 +21,5 @@ cargo run
 - regex = "1"  
 <br />
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/oliverborner/Credit-Card-Checker/blob/main/LICENSE)
 
