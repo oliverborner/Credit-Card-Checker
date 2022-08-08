@@ -14,14 +14,12 @@ fn main() {
     println!("{} Credit Card Checker", cc);
     println!("Enter CC number:");
 
-    // handling input
     let mut input = String::new();
 
     io::stdin()
         .read_line(&mut input)
         .expect("Failed to read line");
 
-    // convert input string into digits and store it in a vec
     let mut digits: Vec<u32> = input.chars().flat_map(|ch| ch.to_digit(10)).collect();
 
     // ************** Luhn Algorithm **************
@@ -30,9 +28,10 @@ fn main() {
     let check_digit = digits.last().cloned().unwrap();
 
     // remove last digit from vec
-    digits.retain(|&x| x != check_digit);
+    let final_length = digits.len().saturating_sub(1);
 
-    // reverse digits
+    digits.truncate(final_length);
+
     digits.reverse();
 
     // process digits
@@ -52,7 +51,7 @@ fn main() {
     }
 
     // get sum
-    let total = return_sum(check_digit, processed_digits.iter().sum());
+    let total = check_digit + processed_digits.iter().sum::<u32>();
 
     // validation
     let validation_result: bool;
@@ -99,11 +98,6 @@ fn main() {
             println!("{}", "Type unknown".red());
         }
     }
-}
-
-// helpers
-fn return_sum(i: u32, j: u32) -> u32 {
-    i + j
 }
 
 // remove \n from inputstring
