@@ -12,7 +12,7 @@ and checks also for the card type via regex.
 ---
 <br />
 
-
+### Installation 
 ```
 cargo run  
 ```
