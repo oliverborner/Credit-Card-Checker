@@ -1,0 +1,9 @@
+[package]
+name = "cc_checker"
+version = "0.1.0"
+edition = "2021"
+authors = ["Oliver Borner <oliverborner@gmail.com>"]
+
+[dependencies]
+colored = "2.0.0"
+regex = "1"
