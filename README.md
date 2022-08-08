@@ -4,10 +4,14 @@
 ![alt text](https://github.com/oliverborner/Credit-Card-Checker/blob/main/screenshot.png)
 
 ---
-Checks if a card number is valid with the help of the  
-[Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm)  
 
-checks also for the card type with regex  
+### Info
+
+Checks if a card number is valid with the help of the [Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm)  
+
+Checks also for the card type via regex.  
+
+### Useful links
 [Payment Card Number (IIN)](https://en.wikipedia.org/wiki/Payment_card_number#Issuer_identification_number_(IIN))  
 [Stackoverflow: How to detect credit card based on number](https://stackoverflow.com/questions/72768/how-do-you-detect-credit-card-type-based-on-number)  
 <br />
