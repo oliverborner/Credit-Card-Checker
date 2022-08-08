@@ -1,1 +1,4 @@
 /target
+.gitignore
+Cargo.lock
+.Cargo.toml.swp
