@@ -1,5 +1,6 @@
 # Credit Card Checker
 ### A credit card checker written in Rust  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ![alt text](https://github.com/oliverborner/Credit-Card-Checker/blob/main/screenshot.png)
 
