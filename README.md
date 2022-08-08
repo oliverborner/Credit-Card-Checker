@@ -1,5 +1,6 @@
 # Credit Card Checker
 #### a credit card checker written in Rust  
+![alt text](https://github.com/oliverborner/Credit-Card-Checker/blob/main/screenshot.png)
 ---
 checks if a card number is valid with the help of the  
 Luhn algorithm https://en.wikipedia.org/wiki/Luhn_algorithm  
