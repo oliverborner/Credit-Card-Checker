@@ -9,9 +9,9 @@ checks also for the card type with regex
 https://en.wikipedia.org/wiki/Payment_card_number  
 https://stackoverflow.com/questions/72768/how-do-you-detect-credit-card-type-based-on-number  
 
----
+```
 ### cargo run  
----
+```
 
 #### dependencies:  
 colored = "2.0.0"  

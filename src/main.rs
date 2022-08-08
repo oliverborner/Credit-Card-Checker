@@ -24,13 +24,12 @@ fn main() {
 
     // ************** Luhn Algorithm **************
 
-    // get last digit and remove last digit from digits vec
+    // store last digit and remove from digits vec
     let check_digit = digits.last().cloned().unwrap();
     let final_length = digits.len().saturating_sub(1);
     digits.truncate(final_length);
     digits.reverse();
 
-    // process digits
     let mut processed_digits = Vec::new();
 
     for index in 0..digits.len() {
@@ -46,7 +45,6 @@ fn main() {
         }
     }
 
-    // get sum
     let total = check_digit + processed_digits.iter().sum::<u32>();
 
     // validation
