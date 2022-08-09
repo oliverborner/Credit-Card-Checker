@@ -17,6 +17,31 @@ and checks also for the card type via regex.
 ```
 cargo run  
 ```
+### Testnumbers
+<table>
+  <tbody>
+    <tr>
+      <td>371449635398431</td>
+      <td>American Express</td>
+    </tr>
+    <tr>
+      <td>30569309025904</td>
+      <td>Diners Club</td>
+    </tr>
+    <tr>
+      <td>3530111333300000</td>
+      <td>JCB</td>
+    </tr>
+    <tr>
+      <td>5555555555554444</td>
+      <td>Mastercard</td>
+    </tr>
+    <tr>
+      <td>4111111111111111</td>
+      <td>Visa</td>
+    </tr>
+  </tbody>
+</table>	
 
 ## Dependencies  
 - colored = "2.0.0"  
