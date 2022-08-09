@@ -17,11 +17,14 @@ fn main() {
         .read_line(&mut input)
         .expect("Failed to read line");
 
-    let mut digits: Vec<u32> = input.chars().flat_map(|ch| ch.to_digit(10)).collect();
+    if input.trim().is_empty() {
+        println!("Your given input was invalid");
+    } else {
+        let mut digits: Vec<u32> = input.chars().flat_map(|ch| ch.to_digit(10)).collect();
 
-    let is_valid = card_validation(&mut digits);
-
-    detect_card_type(is_valid, &input);
+        let is_valid = card_validation(&mut digits);
+        detect_card_type(is_valid, &input);
+    }
 }
 
 fn card_validation(digits: &mut Vec<u32>) -> bool {
