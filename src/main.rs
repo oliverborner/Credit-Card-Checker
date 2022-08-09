@@ -17,7 +17,9 @@ fn main() {
         .read_line(&mut input)
         .expect("Failed to read line");
 
-    // todo: remove whitespaces
+    // remove whitespaces and check user if user input
+    // contains numbers and is not empty
+    input.retain(|c| !c.is_whitespace());
 
     if input.trim().is_empty() || !input.trim().chars().all(char::is_numeric) {
         println!("Your given input was invalid");
