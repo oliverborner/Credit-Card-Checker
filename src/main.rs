@@ -62,7 +62,7 @@ fn card_validation(digits: &mut Vec<u32>) -> bool {
         false
     };
 
-    return validation_result;
+    validation_result
 }
 
 fn detect_card_type(is_valid: bool, input: &str) {
@@ -82,7 +82,7 @@ fn detect_card_type(is_valid: bool, input: &str) {
         )
         .unwrap();
 
-        let formated_input = strip_trailing_newline(&input);
+        let formated_input = strip_trailing_newline(input);
 
         if amex.is_match(formated_input) {
             println!("{}", "American Express".blue());
