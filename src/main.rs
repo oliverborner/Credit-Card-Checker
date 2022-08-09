@@ -17,7 +17,9 @@ fn main() {
         .read_line(&mut input)
         .expect("Failed to read line");
 
-    if input.trim().is_empty() {
+    // todo: remove whitespaces
+
+    if input.trim().is_empty() || !input.trim().chars().all(char::is_numeric) {
         println!("Your given input was invalid");
     } else {
         let mut digits: Vec<u32> = input.chars().flat_map(|ch| ch.to_digit(10)).collect();
