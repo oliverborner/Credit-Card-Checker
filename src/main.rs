@@ -22,9 +22,10 @@ fn main() {
 
     let mut digits: Vec<u32> = input.chars().flat_map(|ch| ch.to_digit(10)).collect();
 
-    // ************** Luhn Algorithm **************
+    // Luhn algorithm
 
     // store last digit and remove from digits vec
+    // then double each digit at an even index
     let check_digit = digits.last().cloned().unwrap();
     let final_length = digits.len().saturating_sub(1);
     digits.truncate(final_length);
@@ -37,7 +38,7 @@ fn main() {
             let mut doubled_digit = digits[index] * 2;
 
             if doubled_digit > 9 {
-                doubled_digit = doubled_digit - 9;
+                doubled_digit -= 9;
             }
             processed_digits.push(doubled_digit);
         } else {
@@ -47,19 +48,17 @@ fn main() {
 
     let total = check_digit + processed_digits.iter().sum::<u32>();
 
-    // validation
-    let validation_result: bool;
-
-    if total % 10 == 0 {
+    let validation_result: bool = if total % 10 == 0 {
         println!("{} {}", valid, "CC is valid!".green());
-        validation_result = true;
+        true
     } else {
         println!("{} {}", invalid, "CC is invalid!".red());
-        validation_result = false;
-    }
+        false
+    };
 
-    // detect cardtype
-    if validation_result == true {
+    // detect the cardtype with a regex pattern match
+    // on the IIN card numbers
+    if validation_result {
         let amex = Regex::new(r"^3[47][0-9]{0,}$").unwrap();
         let jcb = Regex::new(r"^(?:2131|1800|35)[0-9]{0,}$").unwrap();
         let dinersclub = Regex::new(r"^3(?:0[0-59]{1}|[689])[0-9]{0,}$").unwrap();
@@ -98,6 +97,6 @@ fn main() {
 fn strip_trailing_newline(input: &str) -> &str {
     input
         .strip_suffix("\r\n")
-        .or(input.strip_suffix("\n"))
+        .or_else(|| input.strip_suffix("\n"))
         .unwrap_or(input)
 }
