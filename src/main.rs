@@ -6,10 +6,7 @@ fn main() {
     // clear terminal
     print!("\x1B[2J\x1B[1;1H");
 
-    // emoji
     let cc = '\u{1F4B3}';
-    let valid = '\u{2705}';
-    let invalid = '\u{274C}';
 
     println!("{} Credit Card Checker", cc);
     println!("Enter CC number:");
@@ -22,10 +19,19 @@ fn main() {
 
     let mut digits: Vec<u32> = input.chars().flat_map(|ch| ch.to_digit(10)).collect();
 
+    let is_valid = card_validation(&mut digits);
+
+    detect_card_type(is_valid, &input);
+}
+
+fn card_validation(digits: &mut Vec<u32>) -> bool {
     // Luhn algorithm
 
     // store last digit and remove from digits vec
     // then double each digit at an even index
+    let valid = '\u{2705}';
+    let invalid = '\u{274C}';
+
     let check_digit = digits.last().cloned().unwrap();
     let final_length = digits.len().saturating_sub(1);
     digits.truncate(final_length);
@@ -56,9 +62,14 @@ fn main() {
         false
     };
 
+    return validation_result;
+}
+
+fn detect_card_type(is_valid: bool, input: &str) {
     // detect the cardtype with a regex pattern match
     // on the IIN card numbers
-    if validation_result {
+
+    if is_valid {
         let amex = Regex::new(r"^3[47][0-9]{0,}$").unwrap();
         let jcb = Regex::new(r"^(?:2131|1800|35)[0-9]{0,}$").unwrap();
         let dinersclub = Regex::new(r"^3(?:0[0-59]{1}|[689])[0-9]{0,}$").unwrap();
@@ -93,8 +104,8 @@ fn main() {
     }
 }
 
-// remove \n from inputstring
 fn strip_trailing_newline(input: &str) -> &str {
+    // remove \n from inputstring
     input
         .strip_suffix("\r\n")
         .or_else(|| input.strip_suffix("\n"))
