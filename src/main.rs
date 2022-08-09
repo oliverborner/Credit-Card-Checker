@@ -31,10 +31,8 @@ pub fn make_issuer_list() -> Vec<Issuer> {
             "Discover",
         ),
     ];
-    all.into_iter()
-        .filter(|i| i.is_some())
-        .map(|i| i.unwrap())
-        .collect()
+
+    all.into_iter().flatten().collect()
 }
 
 fn main() {
