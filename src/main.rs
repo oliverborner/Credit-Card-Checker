@@ -33,7 +33,7 @@ fn main() {
 
     let mut processed_digits = Vec::new();
 
-    for index in 0..digits.len() {
+    for (index, _digit) in digits.iter().enumerate() {
         if index % 2 == 0 {
             let mut doubled_digit = digits[index] * 2;
 
