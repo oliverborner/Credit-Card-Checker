@@ -1,6 +1,11 @@
 use colored::*;
 use regex::Regex;
 use std::io;
+// TODO
+/* struct Issuer {
+    pattern: Regex,
+    name: String,
+} */
 
 fn main() {
     // clear terminal
@@ -17,7 +22,7 @@ fn main() {
         .read_line(&mut input)
         .expect("Failed to read line");
 
-    // remove whitespaces and check user if user input
+    // remove whitespaces and check if user input
     // contains numbers and is not empty
     input.retain(|c| !c.is_whitespace());
 
