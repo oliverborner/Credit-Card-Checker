@@ -1,11 +1,41 @@
 use colored::*;
 use regex::Regex;
 use std::io;
-// TODO
-/* struct Issuer {
-    pattern: Regex,
-    name: String,
-} */
+
+pub struct Issuer {
+    pub pattern: Regex,
+    pub name: String,
+}
+
+impl Issuer {
+    fn new(regexp: &str, name: &str) -> Option<Self> {
+        let pattern = Regex::new(regexp).ok()?;
+        let name = String::from(name);
+        Some(Issuer { pattern, name })
+    }
+}
+
+pub fn make_issuer_list() -> Vec<Issuer> {
+    let all = vec![
+        Issuer::new(r"^3[47][0-9]{0,}$", "Amex"),
+        Issuer::new(r"^(?:2131|1800|35)[0-9]{0,}$", "JCB"),
+        Issuer::new(r"^3(?:0[0-59]{1}|[689])[0-9]{0,}$", "Dinersclub"),
+        Issuer::new(r"^4[0-9]{0,}$", "Visa"),
+        Issuer::new(
+            r"^(5[1-5]|222[1-9]|22[3-9]|2[3-6]|27[01]|2720)[0-9]{0,}$",
+            "Mastercard",
+        ),
+        Issuer::new(r"^(5[06789]|6)[0-9]{0,}$", "Maestro"),
+        Issuer::new(
+            r"^(6011|65|64[4-9]|62212[6-9]|6221[3-9]|622[2-8]|6229[01]|62292[0-5])[0-9]{0,}$",
+            "Discover",
+        ),
+    ];
+    all.into_iter()
+        .filter(|i| i.is_some())
+        .map(|i| i.unwrap())
+        .collect()
+}
 
 fn main() {
     // clear terminal
@@ -82,43 +112,16 @@ fn detect_card_type(is_valid: bool, input: &str) {
     // on the IIN card numbers
 
     if is_valid {
-        let amex = Regex::new(r"^3[47][0-9]{0,}$").unwrap();
-        let jcb = Regex::new(r"^(?:2131|1800|35)[0-9]{0,}$").unwrap();
-        let dinersclub = Regex::new(r"^3(?:0[0-59]{1}|[689])[0-9]{0,}$").unwrap();
-        let visa = Regex::new(r"^4[0-9]{0,}$").unwrap();
-        let mastercard =
-            Regex::new(r"^(5[1-5]|222[1-9]|22[3-9]|2[3-6]|27[01]|2720)[0-9]{0,}$").unwrap();
-        let maestro = Regex::new(r"^(5[06789]|6)[0-9]{0,}$").unwrap();
-        let discover = Regex::new(
-            r"^(6011|65|64[4-9]|62212[6-9]|6221[3-9]|622[2-8]|6229[01]|62292[0-5])[0-9]{0,}$",
-        )
-        .unwrap();
-
-        let formated_input = strip_trailing_newline(input);
-
-        if amex.is_match(formated_input) {
-            println!("{}", "American Express".blue());
-        } else if jcb.is_match(formated_input) {
-            println!("{}", "Japan Credit Bureau".blue());
-        } else if dinersclub.is_match(formated_input) {
-            println!("{}", "Diners Club".blue());
-        } else if visa.is_match(formated_input) {
-            println!("{}", "Visa".blue());
-        } else if mastercard.is_match(formated_input) {
-            println!("{}", "Mastercard".blue());
-        } else if maestro.is_match(formated_input) {
-            println!("{}", "Maestro".blue());
-        } else if discover.is_match(formated_input) {
-            println!("{}", "Discover".blue());
-        } else {
+        let issuers = make_issuer_list();
+        let mut matches = false;
+        for i in &issuers {
+            if i.pattern.is_match(input) {
+                println!("{}", i.name.blue());
+                matches = true;
+            }
+        }
+        if !matches {
             println!("{}", "Type unknown".red());
         }
     }
-}
-
-fn strip_trailing_newline(input: &str) -> &str {
-    input
-        .strip_suffix("\r\n")
-        .or_else(|| input.strip_suffix("\n"))
-        .unwrap_or(input)
 }
