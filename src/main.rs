@@ -105,7 +105,6 @@ fn detect_card_type(is_valid: bool, input: &str) {
 }
 
 fn strip_trailing_newline(input: &str) -> &str {
-    // remove \n from inputstring
     input
         .strip_suffix("\r\n")
         .or_else(|| input.strip_suffix("\n"))
