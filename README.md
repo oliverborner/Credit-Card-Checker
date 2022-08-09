@@ -1,4 +1,6 @@
 # :credit_card: Credit Card Checker
+[![Actions Status](https://github.com/williamdes/mariadb-mysql-kbs/workflows/Run%20tests/badge.svg)](https://github.com/oliverborner/Credit-Card-Checker/actions) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/oliverborner/Credit-Card-Checker/blob/main/LICENSE)
+
 ### A credit card checker written in Rust  
 
 ![alt text](https://github.com/oliverborner/Credit-Card-Checker/blob/main/screenshot.png)
@@ -21,5 +23,4 @@ cargo run
 - regex = "1"  
 <br />
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/oliverborner/Credit-Card-Checker/blob/main/LICENSE)
 

@@ -17,7 +17,7 @@ impl Issuer {
 
 pub fn make_issuer_list() -> Vec<Issuer> {
     let all = vec![
-        Issuer::new(r"^3[47][0-9]{0,}$", "Amex"),
+        Issuer::new(r"^3[47][0-9]{0,}$", "American Express"),
         Issuer::new(r"^(?:2131|1800|35)[0-9]{0,}$", "JCB"),
         Issuer::new(r"^3(?:0[0-59]{1}|[689])[0-9]{0,}$", "Dinersclub"),
         Issuer::new(r"^4[0-9]{0,}$", "Visa"),
